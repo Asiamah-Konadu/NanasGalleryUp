@@ -50,9 +50,11 @@
     footer{padding:30px 0;border-top:1px solid var(--border);color:var(--muted)}
     .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:800px){.portfolio{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:650px){
+    @media(max-width:900px){
       .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
+    }
+    @media(max-width:650px){
       .portfolio{grid-template-columns:1fr}main{padding-top:125px}
     }
   </style>

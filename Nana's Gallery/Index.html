@@ -18,7 +18,8 @@
     .container{width:min(1120px,92%);margin:auto}
     header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,11,18,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
     nav{height:76px;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-size:1.35rem;font-weight:800;letter-spacing:.3px}
+    .logo{display:inline-flex;align-items:center;justify-content:flex-start;gap:10px;min-width:160px;font-size:1.05rem;font-weight:800;white-space:nowrap}
+    .logo img{display:block;width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(24,214,181,.18))}
     .logo span{color:var(--accent2)}
     .nav-links{display:flex;gap:28px;align-items:center;list-style:none}
     .nav-links a{color:#dce2ec;font-size:.95rem;transition:.25s}
@@ -83,10 +84,10 @@
     @media(max-width:900px){
       .hero-grid,.about{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:1fr 1fr}
       .visual{max-width:650px;margin:auto}
-    }
-    @media(max-width:650px){
       .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
+    }
+    @media(max-width:650px){
       .services,.portfolio{grid-template-columns:1fr}.hero{padding-top:125px}.browser{transform:none}.screen{min-height:280px}
       section{padding:75px 0}.cta{padding:35px 20px}h1{letter-spacing:-2px}
     }
@@ -95,8 +96,8 @@
 <body>
 <header>
   <div class="container">
-    <nav>
-      <a class="logo" href="#home">Nana's <span>Gallery</span></a>
+    <nav aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Nana's Gallery home"><img src="Logo.png" alt=""><span>Nana's Gallery</span></a>
       <button class="menu" id="menu" aria-label="Open menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li><li><a href="#services">Services</a></li>

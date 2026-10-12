@@ -15,12 +15,19 @@
     body{font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 80% 0%,rgba(124,92,255,.18),transparent 30%),var(--bg);color:var(--text);line-height:1.6}
     a{text-decoration:none;color:inherit}
     .container{width:min(1120px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-    nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .logo{font-size:1.35rem;font-weight:800;letter-spacing:.3px}.logo span{color:var(--accent2)}
-    .nav-links{display:flex;gap:26px;align-items:center;list-style:none}
-    .nav-links a{color:#dce2ec}.nav-links a:hover{color:var(--accent2)}
-    main{padding:85px 0 100px}
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,11,18,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:inline-flex;align-items:center;justify-content:flex-start;gap:10px;min-width:160px;font-size:1.05rem;font-weight:800;white-space:nowrap}
+    .logo img{display:block;width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(24,214,181,.18))}
+    .logo span{color:var(--accent2)}
+    .nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+    .nav-links a{color:#dce2ec;font-size:.95rem;transition:.25s}
+    .nav-links a:hover{color:var(--accent2)}
+    .menu{display:none;background:none;border:0;color:white;font-size:1.7rem;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border-radius:12px;font-weight:700;border:1px solid transparent;transition:.25s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),#9b72ff);box-shadow:0 10px 30px rgba(124,92,255,.28)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    main{padding:160px 0 100px}
     .section-head{text-align:center;max-width:700px;margin:0 auto 35px}
     .eyebrow{display:inline-block;color:var(--accent2);font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
     h1{font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;letter-spacing:-2px;margin-bottom:16px}
@@ -43,20 +50,28 @@
     footer{padding:30px 0;border-top:1px solid var(--border);color:var(--muted)}
     .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:800px){.portfolio{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){nav{align-items:flex-start;flex-direction:column;padding:16px 0}.nav-links{gap:16px;flex-wrap:wrap}.portfolio{grid-template-columns:1fr}main{padding-top:60px}}
+    @media(max-width:900px){
+      .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
+      .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
+    }
+    @media(max-width:650px){
+      .portfolio{grid-template-columns:1fr}main{padding-top:125px}
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="container">
     <nav aria-label="Main navigation">
-      <a class="logo" href="Index.html">Nana's <span>Gallery</span></a>
-      <ul class="nav-links">
-        <li><a href="Index.html">Home</a></li>
-        <li><a href="Index.html#services">Services</a></li>
+      <a class="logo" href="Index.html#home" aria-label="Nana's Gallery home"><img src="Logo.png" alt=""><span>Nana's Gallery</span></a>
+      <button class="menu" id="menu" aria-label="Open menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="Index.html#home">Home</a></li><li><a href="Index.html#services">Services</a></li>
         <li><a href="Our-Works.html" aria-current="page">Our Works</a></li>
+        <li><a href="Index.html#portfolio">Portfolio</a></li><li><a href="Index.html#about">About</a></li>
         <li><a href="Index.html#contact">Contact</a></li>
       </ul>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank">Let's Talk</a>
     </nav>
   </div>
 </header>
@@ -160,6 +175,13 @@
   </div>
 </footer>
 <script>
+  const menu = document.getElementById('menu');
+  const navLinks = document.getElementById('navLinks');
+  menu.addEventListener('click', () => navLinks.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
   const filters = document.querySelectorAll('.filter');
   const projects = document.querySelectorAll('.project');
   const emptyState = document.getElementById('emptyState');
