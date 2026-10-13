@@ -57,6 +57,14 @@
     .card:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
     .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(124,92,255,.14);font-size:1.35rem;margin-bottom:18px}
     .card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:.94rem}
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .project{min-height:250px;border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative;background:#111827}
+    .project-bg{height:100%;min-height:250px;padding:25px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;background-repeat:no-repeat}
+    .project:nth-child(1) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("assets/Corporate.png")}
+    .project:nth-child(2) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("assets/E-Commerce.png")}
+    .project:nth-child(3) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("assets/Business%20Pro.png")}
+    .project h3{font-size:1.3rem}.project p{color:#c2cbd8;font-size:.9rem}
+    .badge{display:inline-block;width:max-content;padding:6px 10px;border-radius:20px;background:rgba(255,255,255,.09);font-size:.72rem;margin-bottom:10px}
     .about{max-width:800px;margin:0 auto}
     .checklist{display:grid;gap:13px;margin-top:25px}
     .check{display:flex;gap:10px;align-items:flex-start}.check b{color:var(--accent2)}
@@ -68,13 +76,13 @@
     .whatsapp{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:white;font-size:1.5rem;box-shadow:0 10px 30px rgba(37,211,102,.3);z-index:999}
     .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
     @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:repeat(2,1fr)}
       .visual{max-width:650px;margin:auto}
       .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
     }
     @media(max-width:650px){
-      .services{grid-template-columns:1fr}.hero{min-height:auto;padding:112px 0 64px}.visual{display:none}
+      .services,.portfolio{grid-template-columns:1fr}.hero{min-height:auto;padding:112px 0 64px}.visual{display:none}
       section{padding:75px 0}.cta{padding:35px 20px}h1{letter-spacing:-2px}
       .hero h1{font-size:clamp(2.4rem,12vw,3.5rem);line-height:1.05}
     }
@@ -88,7 +96,7 @@
       <button class="menu" id="menu" aria-label="Open menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li><li><a href="#services">Services</a></li>
-        <li><a href="our-works.html">Our Works</a></li><li><a href="#about">About</a></li>
+        <li><a href="our-works.html">Our Works</a></li><li><a href="#portfolio">Selected Work</a></li><li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-primary nav-cta" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank">Let's Talk</a>
@@ -105,7 +113,7 @@
         <p>Nana's Gallery creates modern, responsive and conversion-focused websites for businesses, brands and entrepreneurs — from Shopify stores to custom business platforms.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27m%20interested%20in%20your%20web%20design%20services." target="_blank">Start a Project →</a>
-          <a class="btn btn-outline" href="our-works.html">View Our Work</a>
+          <a class="btn btn-outline" href="#portfolio">View Our Work</a>
         </div>
       </div>
       <div class="visual reveal">
@@ -128,6 +136,17 @@
         <a class="card reveal" href="our-works.html?category=business"><div class="icon">💼</div><h3>Business Websites</h3><p>Professional websites that build trust, showcase your services and turn visitors into customers.</p></a>
         <a class="card reveal" href="our-works.html?category=management"><div class="icon">⚙️</div><h3>Management Systems</h3><p>Custom web-based systems that help you organize business operations and manage information.</p></a>
         <a class="card reveal" href="our-works.html?category=ecommerce"><div class="icon">🛒</div><h3>E-Commerce</h3><p>Responsive online stores designed to showcase products and make buying simple for customers.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">Selected Work</div><h2>Web experiences with purpose</h2><p>A glimpse of the websites and digital experiences Nana's Gallery creates.</p></div>
+      <div class="portfolio">
+        <article class="project reveal"><div class="project-bg"><span class="badge">Business Website</span><h3>Corporate & Service Sites</h3><p>Clean layouts, strong branding and clear calls to action.</p></div></article>
+        <article class="project reveal"><div class="project-bg"><span class="badge">E-Commerce</span><h3>Online Stores</h3><p>Product-focused experiences built for mobile and desktop.</p></div></article>
+        <article class="project reveal"><div class="project-bg"><span class="badge">Custom System</span><h3>Business Management</h3><p>Purpose-built dashboards and tools for growing businesses.</p></div></article>
       </div>
     </div>
   </section>
