@@ -30,23 +30,29 @@
     .btn-primary:hover{transform:translateY(-2px)}
     .btn-outline{border-color:var(--border);background:rgba(255,255,255,.03)}
     .btn-outline:hover{border-color:rgba(24,214,181,.5)}
-    .hero{min-height:100vh;display:grid;place-items:center;padding:140px 0 80px;position:relative;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+    .hero{height:300vh;padding:0;position:relative}
+    .hero-stage{position:sticky;top:76px;height:calc(100vh - 76px);height:calc(100svh - 76px);overflow:hidden}
+    .hero-track{display:flex;width:100%;height:100%;will-change:transform}
+    .hero-slide{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:5vw;align-items:center;flex:0 0 100%;width:100%;height:100%;padding:clamp(28px,5vw,76px);overflow:hidden}
+    .hero-slide:nth-child(2){background:radial-gradient(ellipse at 78% 50%,rgba(24,214,181,.11),transparent 42%)}
+    .hero-slide:nth-child(3){background:radial-gradient(ellipse at 78% 50%,rgba(124,92,255,.15),transparent 42%)}
+    .hero-copy{position:relative;z-index:1;max-width:640px}
+    .hero-copy h1{font-size:clamp(2.7rem,6vw,5.5rem);line-height:.98;letter-spacing:-3px;margin-bottom:25px}
+    .hero-copy h1 span{background:linear-gradient(90deg,var(--accent2),#8d6bff);-webkit-background-clip:text;color:transparent}
+    .hero-copy p{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:30px}
+    .hero-artwork{height:min(65vh,600px);display:grid;place-items:center}
+    .hero-artwork img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 60px rgba(0,0,0,.45));border-radius:20px}
+    .hero-controls{position:absolute;z-index:2;left:clamp(28px,5vw,76px);bottom:30px;display:flex;align-items:center;gap:13px}
+    .hero-controls button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:rgba(245,247,251,.35);cursor:pointer;transition:width .3s,background .3s}
+    .hero-controls button[aria-current="true"]{width:30px;border-radius:8px;background:var(--accent2)}
+    .hero-hint{position:absolute;right:clamp(28px,5vw,76px);bottom:24px;color:var(--muted);font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase}
+    .hero-hint span{display:inline-block;margin-left:8px;color:var(--accent2);animation:scroll-cue 1.5s ease-in-out infinite}
+    @keyframes scroll-cue{50%{transform:translateY(5px)}}
     .eyebrow{display:inline-block;color:var(--accent2);font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
     h1{font-size:clamp(2.7rem,6vw,5.5rem);line-height:.98;letter-spacing:-3px;margin-bottom:25px}
     h1 span{background:linear-gradient(90deg,var(--accent2),#8d6bff);-webkit-background-clip:text;color:transparent}
     .hero p{font-size:1.1rem;color:var(--muted);max-width:650px;margin-bottom:30px}
     .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .visual{position:relative}
-    .browser{background:#101722;border:1px solid var(--border);border-radius:22px;padding:14px;box-shadow:var(--shadow);transform:rotate(2deg)}
-    .bar{height:28px;display:flex;gap:7px;align-items:center;padding:0 8px}
-    .dot{width:8px;height:8px;border-radius:50%;background:#687386}
-    .screen{min-height:360px;border-radius:14px;background:linear-gradient(135deg,#171d2b,#0a1018);padding:30px;display:flex;flex-direction:column;justify-content:center}
-    .mock-title{height:24px;width:75%;border-radius:7px;background:linear-gradient(90deg,var(--accent),var(--accent2));margin-bottom:18px}
-    .mock-line{height:10px;width:90%;background:#2a3444;border-radius:8px;margin:8px 0}
-    .mock-line.small{width:62%}
-    .mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}
-    .mock-card{height:90px;border-radius:12px;background:#202a3a;border:1px solid var(--border)}
     section{padding:95px 0}
     .section-head{text-align:center;max-width:700px;margin:0 auto 45px}
     .section-head h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:12px}
@@ -76,15 +82,31 @@
     .whatsapp{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:white;font-size:1.5rem;box-shadow:0 10px 30px rgba(37,211,102,.3);z-index:999}
     .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
     @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:repeat(2,1fr)}
-      .visual{max-width:650px;margin:auto}
+      .hero-slide{grid-template-columns:1fr .85fr;gap:24px;padding:32px}
+      .hero-artwork{height:48vh}
+      .hero-copy h1{font-size:clamp(2.5rem,7vw,4.5rem)}
+      .services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:repeat(2,1fr)}
       .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
     }
     @media(max-width:650px){
-      .services,.portfolio{grid-template-columns:1fr}.hero{min-height:auto;padding:112px 0 64px}.visual{display:none}
+      .hero-slide{grid-template-columns:1fr;align-content:center;gap:8px;padding:24px 22px 70px}
+      .hero-copy h1{font-size:clamp(2.35rem,11vw,3.5rem);letter-spacing:-2px;line-height:1.02;margin-bottom:16px}
+      .hero-copy p{font-size:1rem;margin-bottom:20px}
+      .hero-artwork{position:absolute;inset:0 0 0 25%;height:auto;opacity:.22;pointer-events:none}
+      .hero-artwork img{object-fit:cover;mask-image:linear-gradient(to right,transparent,black 55%)}
+      .hero-controls{left:22px;bottom:24px}.hero-hint{right:22px;bottom:20px;font-size:.65rem}
+      .services,.portfolio{grid-template-columns:1fr}
       section{padding:75px 0}.cta{padding:35px 20px}h1{letter-spacing:-2px}
-      .hero h1{font-size:clamp(2.4rem,12vw,3.5rem);line-height:1.05}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .hero{height:auto}
+      .hero-stage{position:relative;top:auto;height:auto;overflow:visible}
+      .hero-track{display:block;transform:none!important}
+      .hero-slide{min-height:calc(100svh - 76px)}
+      .hero-hint,.hero-controls{display:none}
+      .hero-hint span{animation:none}
     }
   </style>
 </head>
@@ -105,26 +127,52 @@
 </header>
 
 <main id="home">
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <div class="eyebrow">Web Design • Development • Digital Solutions</div>
-        <h1>We build websites that make your <span>business stand out.</span></h1>
-        <p>Nana's Gallery creates modern, responsive and conversion-focused websites for businesses, brands and entrepreneurs — from Shopify stores to custom business platforms.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27m%20interested%20in%20your%20web%20design%20services." target="_blank">Start a Project →</a>
-          <a class="btn btn-outline" href="#portfolio">View Our Work</a>
-        </div>
-      </div>
-      <div class="visual reveal">
-        <div class="browser">
-          <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-          <div class="screen">
-            <div class="mock-title"></div><div class="mock-line"></div><div class="mock-line small"></div>
-            <div class="mock-cards"><div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div></div>
+  <section class="hero" aria-label="Featured work and services">
+    <div class="hero-stage" role="region" aria-roledescription="carousel" aria-label="Featured work">
+      <div class="hero-track">
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="hero-copy">
+            <div class="eyebrow">Web Design • Development • Digital Solutions</div>
+            <h1>We build websites that make your <span>business stand out.</span></h1>
+            <p>Nana's Gallery creates modern, responsive and conversion-focused websites for businesses, brands and entrepreneurs — from Shopify stores to custom business platforms.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27m%20interested%20in%20your%20web%20design%20services." target="_blank">Start a Project →</a>
+              <a class="btn btn-outline" href="#portfolio">View Our Work</a>
+            </div>
           </div>
-        </div>
+          <div class="hero-artwork"><img src="assets/Corporate.png" alt="Corporate website design from Nana's Gallery"></div>
+        </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="hero-copy">
+            <div class="eyebrow">Built to help you grow</div>
+            <h1>Make every visit a <span>better experience.</span></h1>
+            <p>From beautiful storefronts to smooth checkout, we create online stores that put your products and customers first.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="our-works.html?category=ecommerce">Explore E-Commerce →</a>
+              <a class="btn btn-outline" href="#services">See Our Services</a>
+            </div>
+          </div>
+          <div class="hero-artwork"><img src="assets/E-Commerce.png" alt="E-commerce website design from Nana's Gallery"></div>
+        </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="hero-copy">
+            <div class="eyebrow">Your vision, brought online</div>
+            <h1>Digital tools made for <span>your business.</span></h1>
+            <p>Get a polished web presence and practical custom solutions designed around the way your business works.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#contact">Let's Build Together →</a>
+              <a class="btn btn-outline" href="#about">Why Nana's Gallery</a>
+            </div>
+          </div>
+          <div class="hero-artwork"><img src="assets/Business%20Pro.png" alt="Business management website design from Nana's Gallery"></div>
+        </article>
       </div>
+      <div class="hero-controls" aria-label="Choose a featured slide">
+        <button type="button" aria-label="Go to slide 1" aria-current="true"></button>
+        <button type="button" aria-label="Go to slide 2" aria-current="false"></button>
+        <button type="button" aria-label="Go to slide 3" aria-current="false"></button>
+      </div>
+      <div class="hero-hint">Scroll to explore <span aria-hidden="true">↓</span></div>
     </div>
   </section>
 
@@ -204,6 +252,48 @@
   }, {threshold: .12});
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const hero = document.querySelector('.hero');
+  const heroStage = document.querySelector('.hero-stage');
+  const heroTrack = document.querySelector('.hero-track');
+  const heroSlides = [...document.querySelectorAll('.hero-slide')];
+  const heroDots = [...document.querySelectorAll('.hero-controls button')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (!reducedMotion.matches) {
+    let ticking = false;
+    const updateCarousel = () => {
+      const scrollDistance = hero.offsetHeight - heroStage.offsetHeight;
+      const progress = Math.max(0, Math.min(1, (window.scrollY - hero.offsetTop) / scrollDistance));
+      const slidePosition = progress * (heroSlides.length - 1);
+      const activeSlide = Math.round(slidePosition);
+
+      heroTrack.style.transform = `translate3d(${-slidePosition * heroStage.clientWidth}px, 0, 0)`;
+      heroDots.forEach((dot, index) => {
+        dot.setAttribute('aria-current', index === activeSlide ? 'true' : 'false');
+        heroSlides[index].inert = index !== activeSlide;
+      });
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateCarousel);
+        ticking = true;
+      }
+    }, {passive: true});
+    window.addEventListener('resize', updateCarousel);
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const scrollDistance = hero.offsetHeight - heroStage.offsetHeight;
+        window.scrollTo({
+          top: hero.offsetTop + scrollDistance * index / (heroSlides.length - 1),
+          behavior: 'smooth'
+        });
+      });
+    });
+    updateCarousel();
+  }
 </script>
 </body>
 </html>
