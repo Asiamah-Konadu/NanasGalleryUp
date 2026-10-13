@@ -57,21 +57,7 @@
     .card:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
     .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(124,92,255,.14);font-size:1.35rem;margin-bottom:18px}
     .card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:.94rem}
-    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .project{min-height:250px;border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative;background:#111827}
-    .project-bg{height:100%;min-height:250px;padding:25px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(135deg,#18223a,#0d111a)}
-    .project:nth-child(2) .project-bg{background:linear-gradient(135deg,#17352f,#101b1a)}
-    .project:nth-child(3) .project-bg{background:linear-gradient(135deg,#342348,#11111c)}
-    /* Card background images (dark gradient keeps text readable) */
-    .project-bg{background-size:cover;background-position:center;background-repeat:no-repeat}
-    .project:nth-child(1) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("Corporate.png")}
-    .project:nth-child(2) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("E-Commerce.png")}
-    .project:nth-child(3) .project-bg{background-image:linear-gradient(to top,rgba(8,11,18,.92) 0%,rgba(8,11,18,.55) 45%,rgba(8,11,18,.1) 100%),url("Business%20Pro.png")}
-    .project h3{font-size:1.3rem}.project p{color:#c2cbd8;font-size:.9rem}
-    .badge{display:inline-block;width:max-content;padding:6px 10px;border-radius:20px;background:rgba(255,255,255,.09);font-size:.72rem;margin-bottom:10px}
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-    .about-box{padding:34px;border-radius:22px;background:linear-gradient(145deg,#121a29,#0c111a);border:1px solid var(--border)}
-    .about-box p{color:var(--muted);margin-top:14px}
+    .about{max-width:800px;margin:0 auto}
     .checklist{display:grid;gap:13px;margin-top:25px}
     .check{display:flex;gap:10px;align-items:flex-start}.check b{color:var(--accent2)}
     .cta{background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(24,214,181,.10));border:1px solid var(--border);border-radius:26px;padding:55px;text-align:center}
@@ -82,14 +68,15 @@
     .whatsapp{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:white;font-size:1.5rem;box-shadow:0 10px 30px rgba(37,211,102,.3);z-index:999}
     .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
     @media(max-width:900px){
-      .hero-grid,.about{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:1fr 1fr}
+      .hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}
       .visual{max-width:650px;margin:auto}
       .nav-links{position:absolute;top:76px;left:0;width:100%;background:#0b1018;display:none;flex-direction:column;padding:22px;border-bottom:1px solid var(--border)}
       .nav-links.open{display:flex}.menu{display:block}.nav-cta{display:none}
     }
     @media(max-width:650px){
-      .services,.portfolio{grid-template-columns:1fr}.hero{padding-top:125px}.browser{transform:none}.screen{min-height:280px}
+      .services{grid-template-columns:1fr}.hero{min-height:auto;padding:112px 0 64px}.visual{display:none}
       section{padding:75px 0}.cta{padding:35px 20px}h1{letter-spacing:-2px}
+      .hero h1{font-size:clamp(2.4rem,12vw,3.5rem);line-height:1.05}
     }
   </style>
 </head>
@@ -101,7 +88,7 @@
       <button class="menu" id="menu" aria-label="Open menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li><li><a href="#services">Services</a></li>
-        <li><a href="Our-Works.html">Our Works</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#about">About</a></li>
+        <li><a href="Our-Works.html">Our Works</a></li><li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-primary nav-cta" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank">Let's Talk</a>
@@ -118,7 +105,7 @@
         <p>Nana's Gallery creates modern, responsive and conversion-focused websites for businesses, brands and entrepreneurs — from Shopify stores to custom business platforms.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%27m%20interested%20in%20your%20web%20design%20services." target="_blank">Start a Project →</a>
-          <a class="btn btn-outline" href="#portfolio">View Portfolio</a>
+          <a class="btn btn-outline" href="Our-Works.html">View Our Work</a>
         </div>
       </div>
       <div class="visual reveal">
@@ -145,17 +132,6 @@
     </div>
   </section>
 
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-head reveal"><div class="eyebrow">Selected Work</div><h2>Web experiences with purpose</h2><p>Here are examples of the types of projects Nana's Gallery can create for you.</p></div>
-      <div class="portfolio">
-        <article class="project reveal"><div class="project-bg"><span class="badge">Business Website</span><h3>Corporate & Service Sites</h3><p>Clean layouts, strong branding and clear calls to action.</p></div></article>
-        <article class="project reveal"><div class="project-bg"><span class="badge">E-Commerce</span><h3>Online Stores</h3><p>Product-focused experiences built for mobile and desktop.</p></div></article>
-        <article class="project reveal"><div class="project-bg"><span class="badge">Custom System</span><h3>Business Management</h3><p>Purpose-built dashboards and tools for growing businesses.</p></div></article>
-      </div>
-    </div>
-  </section>
-
   <section id="about">
     <div class="container about">
       <div class="reveal">
@@ -167,12 +143,6 @@
           <div class="check"><b>✓</b><span>Solutions tailored to your business instead of one-size-fits-all templates.</span></div>
           <div class="check"><b>✓</b><span>Direct communication through WhatsApp from project discussion to delivery.</span></div>
         </div>
-      </div>
-      <div class="about-box reveal">
-        <h3>Have an idea for your website?</h3>
-        <p>Tell Nana's Gallery what you want to build. Whether you need a business website, Shopify store, e-commerce platform or management system, let's turn your idea into a professional online experience.</p>
-        <br>
-        <a class="btn btn-primary" href="https://wa.me/233540661022?text=Hello%20Nana%27s%20Gallery%2C%20I%20have%20a%20website%20idea%20I%27d%20like%20to%20discuss." target="_blank">Discuss Your Project</a>
       </div>
     </div>
   </section>
